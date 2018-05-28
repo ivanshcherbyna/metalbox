@@ -1,13 +1,20 @@
 </div>
 <!-- footer -->
+
 			<footer class="mb-footer footer" role="contentinfo">
                 <div class="footer-inner">
                     <div class="mb-content-layout">
                         <div class="mb-content-layout-row responsive-layout-row-2">
+
+                            <?php wp_nav_menu(array(
+                                    'menu'=>6,
+                                    'menu_id' => 'id-footer-menu',
+                                    'menu_class' => 'footer-menu',
+                                    'container_class' => 'mb-layout-cell layout-item-0',)
+                                ); ?>
+
                             <div class="mb-layout-cell layout-item-0" style="width: 50%">
-                                <p style="float: left; padding-left: 20px; text-align: left;"><a href="index.html" target="_self">Главная</a>|<a href="o_kompanii.html">О компании</a>|<a href="politika.html" target="_self">Политика</a>|<a href="produkciya.html">Продукция</a>|<a href="kontakty.html" target="_self">Контакты</a></p>
-                            </div><div class="mb-layout-cell layout-item-0" style="width: 50%">
-                                <span style="color: #FF530F;"><span style="font-weight: bold;">TELEPHONE:</span> (067) 610-01-21, (<span class="wmi-callto">067) 612-39-59</span></span><br><span style="color: #FF530F;"><span style="font-weight: bold;">FAX:</span> (061)&nbsp;239-62-07</span><br><span style="color: #FF530F;"><span style="font-weight: bold;">E-MAIL:</span> ZAPSTAL@UKR.NET</span>
+                                <span style="color: #FF530F;"><span style="font-weight: bold;">Тел.:</span> (067) 610-01-21, (<span class="wmi-callto">067) 612-39-59</span></span><br><span style="color: #FF530F;"><span style="font-weight: bold;">Факс:</span> (061)&nbsp;239-62-07</span><br><span style="color: #FF530F;"><span style="font-weight: bold;">E-mail:</span> ZAPSTAL@UKR.NET</span>
                             </div>
                         </div>
                     </div>

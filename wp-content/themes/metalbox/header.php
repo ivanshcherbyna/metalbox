@@ -16,7 +16,7 @@
 
 
         <div id="mb-main">
-            <div id="mb-hmenu-bg" class="mb-bar mb-nav">
+            <div id="mb-hmenu-bg" class="mb-bar mb-nav" style="height: 42px; top: 108px;">
             </div>
             <div class="mb-sheet clearfix">
 
@@ -24,11 +24,7 @@
 		<header class="mb-header header" role="banner">
 			<div id="navigation"  class="nav-container">
 
-				<!-- nav -->
-<!--				<nav class="nav" role="navigation">-->
-<!--					--><?php //lwp_nav(); ?>
-<!--				</nav>-->
-				<!-- /nav -->
+
 			</div>
 
                 <div class="mb-shapes">
@@ -36,13 +32,30 @@
                 </div>
 
                 <h1 class="mb-headline">
-                    <a href="<?php home_url() ;?>"><?php bloginfo('name');?></a>
+                    <a href="<?php echo home_url() ;?>"><?php bloginfo('name');?></a>
                 </h1>
                 <h2 class="mb-slogan">Производственное предприятие</h2>
-
-                <nav class="mb-nav">
-                    <div class="mb-nav-inner">
-                        <ul class="mb-hmenu"><li><a href="o_kompanii.html">О компании</a></li><li><a href="politika.html">Политика</a></li><li><a href="produkciya.html">Продукция</a><ul><li><a href="produkciya/kontejjnery.html">Контейнеры</a></li><li><a href="produkciya/kontejjnernye_ploshhadki.html">Контейнерные площадки</a></li><li><a href="produkciya/autonovinka.html">Автоновинка</a></li><li><a href="produkciya/dorozhnoe_ograzhdenie.html">Дорожное ограждение</a></li><li><a href="produkciya/urny.html">Урны</a></li><li><a href="produkciya/zabory_i_drugoe.html">Заборы и другое</a></li></ul></li><li><a href="hit_prodaj.html">Хит продаж</a></li><li><a href="publications.html">Статьи</a></li><li><a href="kontakty.html">Контакты</a></li></ul>
-                    </div>
-                </nav>
+            <!-- nav -->
+            <nav class="mb-nav">
+                    <?php lwp_nav(); ?>
+            </nav>
+            <!-- /nav -->
+<!--                <nav class="mb-nav">-->
+<!--                    <div class="mb-nav-inner">-->
+<!--                        <ul class="d">-->
+<!--                            <li><a href="o_kompanii.html">О компании</a></li>-->
+<!--                            <li><a href="politika.html">Политика</a></li>-->
+<!--                            <li><a href="produkciya.html">Продукция</a>-->
+<!--                                <ul><li><a href="produkciya/kontejjnery.html">Контейнеры</a></li>-->
+<!--                                    <li><a href="produkciya/kontejjnernye_ploshhadki.html">Контейнерные площадки</a></li>-->
+<!--                                    <li><a href="produkciya/autonovinka.html">Автоновинка</a></li>-->
+<!--                                    <li><a href="produkciya/dorozhnoe_ograzhdenie.html">Дорожное ограждение</a></li>-->
+<!--                                    <li><a href="produkciya/urny.html">Урны</a></li>-->
+<!--                                    <li><a href="produkciya/zabory_i_drugoe.html">Заборы и другое</a></li>-->
+<!--                                </ul></li><li><a href="hit_prodaj.html">Хит продаж</a></li>-->
+<!--                            <li><a href="publications.html">Статьи</a></li>-->
+<!--                            <li><a href="kontakty.html">Контакты</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </nav>-->
 		</header>				

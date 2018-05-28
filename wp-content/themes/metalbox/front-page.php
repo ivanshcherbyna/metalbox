@@ -9,7 +9,7 @@
         <div class="mb-layout-wrapper">
             <div class="mb-content-layout">
                 <div class="mb-content-layout-row">
-                    <div class="mb-layout-cell mb-content"><article class="mb-post mb-article">
+                    <div class="mb-layout-cell mb-content mb-postcontent">
 
 
                             <?php echo do_shortcode('[slick-slider category="4"]'); ?>
@@ -17,15 +17,21 @@
                             <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
             <!-- article -->
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <div id="post-<?php the_ID(); ?>" >
 
                 <?php the_content(); ?>
 
 
 
-            </article>
+            </div>
             <!-- /article -->
-
+        <div class="mb-content-layout-wrapper layout-item-0">
+                                    <div class="mb-content-layout layout-item-3">
+                                        <div class="mb-content-layout-row">
+                                            <?php get_news('general');?>
+                                        </div>
+                                    </div>
+                                </div>
         <?php endwhile; ?>
 
         <?php else: ?>
@@ -39,6 +45,9 @@
             <!-- /article -->
 
         <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /section -->
     </main>

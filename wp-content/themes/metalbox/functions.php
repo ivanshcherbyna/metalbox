@@ -69,9 +69,9 @@ function lwp_nav()
 		'theme_location'  => 'header-menu',
 		'menu'            => '',
 		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container',
+		'container_class' => 'mb-nav-inner',
 		'container_id'    => '',
-		'menu_class'      => 'menu',
+		'menu_class'      => 'mb-hmenu',
 		'menu_id'         => '',
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
@@ -79,7 +79,7 @@ function lwp_nav()
 		'after'           => '',
 		'link_before'     => '',
 		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
+		'items_wrap'      => '<ul class=\'mb-hmenu\'>%3$s</ul>',
 		'depth'           => 0,
 		'walker'          => ''
 		)
@@ -264,8 +264,99 @@ add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed i
 add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 
 // Remove Filters
-remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
+//remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
 include_once 'inc/loader.php';
+
+/*
+ * Customize Menu Item Classes
+ * @param array $classes, current menu classes
+ * @param object $item, current menu item
+ * @param object $args, menu arguments
+ * @return array $classes
+ */
+function be_menu_item_classes( $classes, $item, $args ) {
+    if( 'header' !== $args->theme_location )
+        return $classes;
+    if( ( is_singular( 'post' ) || is_category() || is_tag() ) && 'Blog' == $item->title )
+        $classes[] = 'active';
+    if( ( is_singular( 'code' ) || is_tax( 'code-tag' ) ) && 'Code' == $item->title )
+        $classes[] = 'active';
+    if( is_singular( 'projects' ) && 'Case Studies' == $item->title )
+        $classes[] = 'active';
+    return array_unique( $classes );
+}
+add_filter( 'nav_menu_css_class', 'be_menu_item_classes', 10, 3 );
+
+function get_news($category_slug)
+{
+    $args = array(
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'numberposts' => 4,
+        'category_name' => $category_slug,
+        'post_status' => 'publish',
+        'post_type' => array('post','page')
+    );
+
+    $posts = get_posts($args);
+
+    foreach ($posts as $post) {
+        setup_postdata($post);
+        $str = strpos($post->post_content, "\n");
+        $subtitle = strpos($post->post_content,0,$str);
+        $image=get_the_post_thumbnail_url($post,array(500,500));
+        echo '<div class="mb-layout-cell layout-item-6" style="width: 25%">
+                    <p style="text-align: left">
+                        <img src="'.$image.'" width="208" height="142" style="float: left"><br>
+                    </p>
+                    <p style="text-align: left">
+                        <a href="'.$post->guid.'" target="_self" class="mb-button">'.$post->post_title.'</a>&nbsp;<br>
+                    </p>
+              </div>
+        ';
+        // формат вывода
+    }
+wp_reset_postdata(); // сброс
+}
+
+function check_general_post($category_slug){
+    $category = get_category( get_query_var( 'cat' ) );
+    $args = array(
+        'category_name' => $category_slug,
+        'post_status' => 'publish',
+        'post_type' => array('post','page')
+    );
+    $posts = get_posts($args);
+    //if (!empty($posts)) return $category; else return false;
+    var_dump($category);
+}
+function get_posts_links($category_slug)
+{
+    $args = array(
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'numberposts' => -1,
+        'category_name' => $category_slug,
+        'post_status' => 'publish',
+        'post_type' => 'post'
+    );
+    $posts = get_posts($args);
+    foreach ($posts as $post) {
+        setup_postdata($post);
+        $str = strpos($post->post_content, "\n");
+        $subtitle = strpos($post->post_content,0,$str);
+        $image=get_the_post_thumbnail_url($post,array(500,500));
+        echo '  <p>
+                    <a href="'.$post->guid.'">
+                    <span style="color: rgb(3, 50, 118); ">'.$post->post_title.'</span>
+                    </a>
+                    <span style="color: #033276;"><br></span>
+                 </p>       
+           ';
+        // формат вывода
+    }
+    wp_reset_postdata(); // сброс
+}
 
 ?>

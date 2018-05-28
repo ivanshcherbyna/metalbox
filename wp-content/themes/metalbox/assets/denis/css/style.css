@@ -601,9 +601,10 @@ ul.mb-hmenu, ul.mb-hmenu ul
     min-height: 0;
 }
 
-ul.mb-hmenu
+.mb-nav-inner>ul
 {
-    display: inline-block;
+    display: -webkit-inline-box;
+    /*display: inline-block;*/
     vertical-align: middle;
     padding-left: 6px;
     padding-right: 6px;
@@ -656,21 +657,21 @@ nav.mb-nav
     float: left;
 }
 
-.mb-menuitemcontainer
+.mb-menuitemcontainer/* -----?? error ???---*/
 {
     margin:0 auto;
 }
-ul.mb-hmenu>li {
+ul.mb-hmenu>li, .mb-nav-inner>ul>li {
     margin-left: 9px;
 }
-ul.mb-hmenu>li:first-child {
+ul.mb-hmenu>li:first-child, .mb-nav-inner>ul>li:first-child{
     margin-left: 4px;
 }
-ul.mb-hmenu>li:last-child, ul.mb-hmenu>li.last-child {
+ul.mb-hmenu>li:last-child, ul.mb-hmenu>li.last-child ,.mb-nav-inner>ul>li:last-child, .mb-nav-inner>ul>li.last-child{
     margin-right: 4px;
 }
 
-ul.mb-hmenu>li>a
+ul.mb-hmenu>li>a, .mb-nav-inner>ul>li>a
 {
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
@@ -692,7 +693,13 @@ ul.mb-hmenu>li>a
 .mb-hmenu>li>a:link,
 .mb-hmenu>li>a:visited,
 .mb-hmenu>li>a.active,
-.mb-hmenu>li>a:hover
+.mb-hmenu>li>a:hover,
+
+.mb-nav-inner>ul>li>a,
+.mb-nav-inner>ul>li>a:link,
+.mb-nav-inner>ul>li>a:visited,
+.mb-nav-inner>ul>li>a.active,
+.mb-nav-inner>ul>li>a:hover
 {
     font-size: 16px;
     font-family: Verdana, Geneva, Arial, Helvetica, Sans-Serif;
@@ -830,16 +837,62 @@ ul.mb-hmenu ul li a:hover, .desktop ul.mb-hmenu ul li:hover>a
     border-radius:3px;
     margin:0 auto;
 }
-.mb-hmenu ul a:hover
+.mb-hmenu ul a:hover, ul ul a:hover
 {
     color: #EBEBEB;
 }
-
+/*.sub-menu {*/
+    /*display: none;*/
+    /*top:100%;*/
+    /*visibility: hidden;*/
+    /*position: absolute;*/
+    /*z-index: 10;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*padding: 16px 36px 36px 36px;*/
+    /*margin: -10px 0 0 -30px;*/
+/*}*/
+.menu-item.menu-item-has-children:hover .sub-menu{
+    display: block;
+}
+.mb-nav-inner ul>li:hover>a{
+    background: linear-gradient(to bottom, #FF6D33 0, #FF4800 71%, #EB4200 100%) no-repeat;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #39598E;
+    /*padding: 0 17px;*/
+    margin: 0 auto;
+}
+.mb-postcontent.mb-postcontent-0.clearfix {
+    background: rgba(226, 232, 238, 0.8);
+    padding: 10px;
+}
+.mb-layout-cell.layout-item-6 {
+    padding: 2px;
+}
+.mb-layout-cell.layout-item-2:nth-child(odd) img,.mb-layout-cell.layout-item-2 p:nth-child(odd) img{
+    float: left;
+}
+.mb-layout-cell.layout-item-2:nth-child(even) img,.mb-layout-cell.layout-item-2 p:nth-child(even) img {
+    float: right;
+}
 .desktop .mb-hmenu ul li:hover>a
 {
     color: #EBEBEB;
 }
-
+ul#id-footer-menu {
+    width: 66%;
+    display: flex;
+    justify-content: center;
+    float: right;
+}
+ul#id-footer-menu li:after {
+    content: '|';
+}
+ul#id-footer-menu>li:last-child:after {
+    content: '';
+}
 ul.mb-hmenu ul:before
 {
     background: #757575;
@@ -853,26 +906,29 @@ ul.mb-hmenu ul:before
     content: ' ';
     z-index: 1;
 }
-.desktop ul.mb-hmenu li:hover>ul {
+.desktop ul.mb-hmenu li:hover>ul{
     visibility: visible;
     top: 100%;
 }
-.desktop ul.mb-hmenu li li:hover>ul {
+.desktop ul.mb-hmenu li li:hover>ul{
     top: 0;
     left: 100%;
 }
 
 ul.mb-hmenu ul
 {
-    visibility: hidden;
+    /*visibility: hidden;*/
+    display: none;
     position: absolute;
     z-index: 10;
     left: 0;
-    top: 0;
-    background-image: url('images/spacer.gif');
+    top: 30px;
+    background: linear-gradient(to bottom, rgba(51, 80, 128, 0.07) 0, rgba(16, 25, 40, 0.04) 100%) no-repeat, url(images/nav.png), linear-gradient(to bottom, #2D4771 0, #162237 100%) no-repeat;
+    border-radius: 0px 0px 5px 5px;
+    border: 5px solid rgba(51, 80, 128, 0.5);
 }
 
-.desktop ul.mb-hmenu>li>ul
+.desktop ul.mb-hmenu>li>ul, .desktop .mb-hmenu>li>ul
 {
     padding: 16px 36px 36px 36px;
     margin: -10px 0 0 -30px;
@@ -966,6 +1022,7 @@ ul.mb-hmenu ul
 
 .mb-layout-wrapper
 {
+    padding: 10px;
     position: relative;
     margin: 0 auto 0 auto;
     z-index: auto !important;
@@ -2121,8 +2178,8 @@ blockquote p,
 
 .mb-footer p
 {
-    padding:0;
-    text-align: left;
+    padding: 10px;
+    text-align: center;
 }
 
 .mb-footer a,

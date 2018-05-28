@@ -13,15 +13,40 @@ if ( !function_exists( "redux_add_metaboxes" ) ):
 	$page_options = array();
 
 	$metaSection = array(
-		'title' => 'Page meta',
+		'title' => 'Cсылка Госзакупки',
 		'icon_class'    => 'icon-large',
 		'icon'          => 'el-icon-list-alt',
 		'fields' => array(
 			array(
-				'id'     => 'meta',
+				'id'     => 'label-zakupki',
 				'type'   => 'text',
-				'title'  => __( 'Metafield')
+				'title'  => __( 'Название источника',THEME_OPT)
 			),
+            array(
+                'id'     => 'url-zakupki',
+                'type'   => 'text',
+                'title'  => __( 'URL cсылка Госзакупки',THEME_OPT)
+            ),
+            array(
+                'id'               => 'post_page_sections',
+                'type'             => 'repeatable_list',
+                'accordion'      => true,
+                'title'            => __('Статьи о нас:', THEME_OPT),
+                'add_button'     => __( 'Добавить статью'),
+                'remove_button'  => __( 'Удалить статью'),
+                'fields'         => array(
+                    array(
+                        'id'     => 'label-links',
+                        'type'   => 'text',
+                        'title'  => __( 'Название источника',THEME_OPT)
+                    ),
+                    array(
+                        'id'     => 'url-links',
+                        'type'   => 'text',
+                        'title'  => __( 'URL cсылка',THEME_OPT)
+                    )
+                )
+            )
 		)
 	);
 	
@@ -29,9 +54,9 @@ if ( !function_exists( "redux_add_metaboxes" ) ):
 
 	$metaboxes[] = array(
 		'id'            => 'page-options',
-		'title'         => __( 'Page options', THEME_OPT ),
+		'title'         => __( 'Дополнительные поля страницы', THEME_OPT ),
 		'post_types'    => array( 'page' ),
-		// 'page_template' => array('template-home.php'),
+		'page_template' => array('posts-page.php'),
 		'position'      => 'normal', // normal, advanced, side
 		'priority'      => 'high', // high, core, default, low
 		'sidebar'       => false, // enable/disable the sidebar in the normal/advanced positions

@@ -4,32 +4,33 @@
 <main role="main">
 	<!-- section -->
 	<section>
-		<div class="title"><h1><?php the_title(); ?></h1></div>
+        <div class="mb-postmetadataheader">
+            <h2 class="mb-postheader"><span class="mb-postheadericon"><?php the_title(); ?></span></h2>
+        </div>
 
-	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+    <div class="mb-postcontent mb-postcontent-0 clearfix">
+            <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-		<!-- article -->
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <div class="mb-content-layout-wrapper layout-item-0">
+            <div class="mb-content-layout layout-item-1">
+                  <div class="mb-layout-cell layout-item-2" style="width: 100%">
+                    <?php the_content(); ?>
+                  </div>
+            </div>
+        </div>
 
-			<?php the_content(); ?>
+            <?php endwhile; ?>
 
-			<?php comments_template( '', true ); // Remove if you don't want comments ?>
+            <?php else: ?>
 
-		</article>
-		<!-- /article -->
+                <!-- article -->
+                <article>
 
-	<?php endwhile; ?>
+                    <h2><?php _e( 'Sorry, nothing to display.', 'teatrhotel' ); ?></h2>
 
-	<?php else: ?>
-
-		<!-- article -->
-		<article>
-
-			<h2><?php _e( 'Sorry, nothing to display.', 'teatrhotel' ); ?></h2>
-
-		</article>
-		<!-- /article -->
-
+                </article>
+                <!-- /article -->
+    </div>
 	<?php endif; ?>
 
 	</section>
